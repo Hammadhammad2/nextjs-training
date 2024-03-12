@@ -1,0 +1,20 @@
+export const Users = "Users";
+export const Name = "Name";
+export const Email = "Email";
+export const Address = "Address";
+export const Phone = "Phone";
+export const Website = "Website";
+export const Edit = "Edit";
+export const NoUsersFound = "No users found";
+export const City = "City:";
+export const Street = "Street:";
+
+export const EditUser = "Edit User";
+export const UsersPosts = "Users / Posts ";
+export const EditPosts = "Edit Posts";
+export const UsersPostsEdit = "Users / Posts / Edit User";
+export const UsersPostsEditActive = "Edit User";
+export const UsersPostsIdEdit = "Users / Posts / [id] / Edit User";
+export const UsersPostsIdEditActive = "Edit User";
+export const UsersPostsId = "Users / Posts / [id]";
+export const UsersPostsIdActive = "Users / Posts / [id]";
