@@ -33,9 +33,11 @@ export default async function Page({ params, searchParams }) {
         <CreatePosts userId={userId} />
       </div>
       <PostsListing posts={posts} currentPage={currentPage} />
-      <div className="mt-5 flex w-full justify-center">
-        <Pagination totalPages={totalPages} />
-      </div>
+      {posts?.length > 0 && (
+        <div className="mt-5 flex w-full justify-center">
+          <Pagination totalPages={totalPages} />
+        </div>
+      )}
     </div>
   );
 }
