@@ -30,3 +30,41 @@ export const generatePagination = (currentPage, totalPages) => {
     totalPages,
   ];
 };
+
+export function calculatePosition(index, totalItems) {
+  if (totalItems === 1) {
+    return "single";
+  } else if (index === 0) {
+    return "first";
+  } else if (index === totalItems - 1) {
+    return "last";
+  } else {
+    return "middle";
+  }
+}
+
+export function generateInitialValues(formData) {
+  const initialValues = {};
+
+  formData?.forEach((field) => {
+    const nestedKeys = field.name.split(".");
+    let currentValue = initialValues;
+
+    nestedKeys.forEach((key, index) => {
+      if (index === nestedKeys.length - 1) {
+        if (field.multiple) {
+          currentValue[key] = [];
+        } else {
+          currentValue[key] = "";
+        }
+      } else {
+        if (!currentValue[key]) {
+          currentValue[key] = isNaN(nestedKeys[index + 1]) ? {} : [];
+        }
+        currentValue = currentValue[key];
+      }
+    });
+  });
+
+  return initialValues;
+}

@@ -4,8 +4,9 @@ import { UserGroupIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { urls } from "../utils/constants";
 
-const links = [{ name: "Users", href: "/users", icon: UserGroupIcon }];
+const links = [{ name: "Users", href: urls.USERS, icon: UserGroupIcon }];
 
 export default function NavLinks() {
   const pathname = usePathname();

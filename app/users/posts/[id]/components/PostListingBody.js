@@ -9,14 +9,12 @@ export default function PostListingBody({ post, postId }) {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
   return (
     <>
-      <div
-        onClick={() => {
-          setOpenModal(true);
-        }}
-        className="cursor-pointer "
-      >
+      <div onClick={handleOpenModal} className="cursor-pointer ">
         <h2 className="text-lg font-bold mb-2">{post.title}</h2>
         <p className="text-gray-700 text-sm">{post.body}</p>
       </div>

@@ -21,10 +21,9 @@ export function CardSkeleton() {
 export function CardsSkeleton() {
   return (
     <>
-      <CardSkeleton />
-      <CardSkeleton />
-      <CardSkeleton />
-      <CardSkeleton />
+      {[...Array(4)].map((_, index) => (
+        <CardSkeleton key={index} />
+      ))}
     </>
   );
 }
@@ -67,11 +66,9 @@ export function LatestInvoicesSkeleton() {
       <div className="mb-4 h-8 w-36 rounded-md bg-gray-100" />
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-100 p-4">
         <div className="bg-white px-6">
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
+          {[...Array(5)].map((_, index) => (
+            <InvoiceSkeleton key={index} />
+          ))}
           <div className="flex items-center pb-2 pt-6">
             <div className="h-5 w-5 rounded-full bg-gray-200" />
             <div className="ml-2 h-4 w-20 rounded-md bg-gray-200" />
@@ -89,10 +86,9 @@ export default function DashboardSkeleton() {
         className={`${shimmer} relative mb-4 h-8 w-36 overflow-hidden rounded-md bg-gray-100`}
       />
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
+        {[...Array(4)].map((_, index) => (
+          <CardSkeleton key={index} />
+        ))}
       </div>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
         <RevenueChartSkeleton />
@@ -165,12 +161,9 @@ export function InvoicesTableSkeleton() {
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
-            <InvoicesMobileSkeleton />
+            {[...Array(4)].map((_, index) => (
+              <InvoicesMobileSkeleton key={index} />
+            ))}
           </div>
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
@@ -199,15 +192,9 @@ export function InvoicesTableSkeleton() {
               </tr>
             </thead>
             <tbody className="bg-white">
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
+              {[...Array(9)].map((_, index) => (
+                <TableRowSkeleton key={index} />
+              ))}
             </tbody>
           </table>
         </div>

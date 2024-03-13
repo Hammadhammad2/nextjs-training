@@ -3,17 +3,31 @@ import Modal from "@mui/material/Modal";
 import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { TailSpin } from "react-loader-spinner";
-import { fetchCommentsData } from "./helper";
+import { fetchCommentsByPostId } from "../../../../api/comments";
 
 export default function CommentsModal({ handleCloseModal, openModal, postId }) {
   const [commentsData, setCommentsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (openModal) {
-      fetchCommentsData(postId, setLoading, setCommentsData);
-    }
+    const fetchCommentsData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetchCommentsByPostId(postId);
+        setCommentsData(response);
+        setLoading(false);
+      } catch (e) {
+        setLoading(false);
+      }
+    };
+
+    if (openModal) fetchCommentsData();
   }, [openModal]);
+
+  const handleClose = () => {
+    setCommentsData([]);
+    handleCloseModal();
+  };
 
   return (
     <Modal
@@ -28,10 +42,7 @@ export default function CommentsModal({ handleCloseModal, openModal, postId }) {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold">Comments</h2>
           <button
-            onClick={() => {
-              setCommentsData([]);
-              handleCloseModal();
-            }}
+            onClick={handleClose}
             className="rounded-md border p-2 hover:bg-gray-100"
           >
             <XMarkIcon className="h-5" />

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { DeletePosts, EditPosts } from "./buttons";
+import { DeletePosts, EditPosts } from "../buttons";
 import PostsListingBody from "./PostListingBody";
 
 export default function PostsListing({ posts }) {
