@@ -50,7 +50,6 @@ export async function deletePost(id, userId) {
   try {
     await instance.delete(`/posts/${id}`);
     revalidatePath(`/users/posts/${userId}`);
-    showToastSuccess("Deleted post.");
 
     return { message: "Deleted post." };
   } catch (error) {

@@ -7,7 +7,7 @@ export async function submitHandler(post, values, resetForm, userId) {
   } else {
     await createPost(values, userId);
   }
-  //   resetForm();
+  resetForm();
 }
 
 export const initialValues = {

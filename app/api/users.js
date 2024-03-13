@@ -47,7 +47,7 @@ export async function editUser(id, data) {
   } catch (error) {
     return { message: "Failed to edit user" };
   }
-  // revalidatePath("/users");
+  revalidatePath("/users");
   redirect("/users");
 }
 

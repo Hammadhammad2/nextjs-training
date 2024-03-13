@@ -12,9 +12,9 @@ export default async function Page({ params, searchParams }) {
   const posts = await fetchFilteredPosts(userId, currentPage, query);
   const totalPages = await fetchPostsPages(userId, query);
 
-  // if (!posts) {
-  //   notFound();
-  // }
+  if (!posts) {
+    notFound();
+  }
 
   return (
     <div className="w-full">

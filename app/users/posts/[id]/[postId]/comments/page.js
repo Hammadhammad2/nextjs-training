@@ -1,8 +1,4 @@
-// import { fetchCustomers, fetchUserById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
-import Breadcrumbs from "../../../../../components/shared/Breadcrumbs";
-import { fetchPostById } from "../../../../../api/posts";
-import EditPostForm from "../../PostsForm";
 import { fetchCommentsByPostId } from "../../../../../api/comments";
 import CommentsModal from "./CommentsModal";
 export const metadata = {

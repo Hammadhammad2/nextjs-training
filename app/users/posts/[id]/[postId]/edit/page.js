@@ -1,4 +1,3 @@
-// import { fetchCustomers, fetchUserById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../../components/shared/Breadcrumbs";
 import { fetchPostById } from "../../../../../api/posts";
