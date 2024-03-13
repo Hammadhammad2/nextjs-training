@@ -1,4 +1,6 @@
 import { createPost, editPost } from "../../../api/posts.js";
+import { fetchCommentsByPostId } from "../../../api/comments";
+
 import * as Yup from "yup";
 
 export async function submitHandler(post, values, resetForm, userId) {
@@ -25,3 +27,19 @@ export const validationSchema = Yup.object({
     .min(3, "Body must be at least 3 characters")
     .max(1000, "Body must be at most 1000 characters"),
 });
+
+export const fetchCommentsData = async (
+  postId,
+  setLoading,
+  setCommentsData
+) => {
+  try {
+    setLoading(true);
+    const response = await fetchCommentsByPostId(postId);
+    setCommentsData(response);
+    setLoading(false);
+  } catch (e) {
+    console.log(e);
+    setLoading(false);
+  }
+};
