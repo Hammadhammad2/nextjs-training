@@ -30,7 +30,7 @@ export default function Pagination({ totalPages }) {
 
         <div className="flex -space-x-px">
           {allPages.map((page, index) => {
-            const position = calculatePosition(index, allPages.length);
+            const position = calculatePosition(index, allPages.length, page);
 
             return (
               <PaginationNumber

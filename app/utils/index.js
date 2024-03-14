@@ -31,16 +31,15 @@ export const generatePagination = (currentPage, totalPages) => {
   ];
 };
 
-export function calculatePosition(index, totalItems) {
-  if (totalItems === 1) {
-    return "single";
-  } else if (index === 0) {
-    return "first";
-  } else if (index === totalItems - 1) {
-    return "last";
-  } else {
-    return "middle";
-  }
+export function calculatePosition(index, allPages, page) {
+  let position = "first" | "last" | "single" | "middle";
+
+  if (index === 0) position = "first";
+  if (index === allPages.length - 1) position = "last";
+  if (allPages.length === 1) position = "single";
+  if (page === "...") position = "middle";
+
+  return position;
 }
 
 export function generateInitialValues(formData) {
