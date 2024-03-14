@@ -5,6 +5,7 @@ import PostsListing from "./components/PostsListing";
 import Pagination from "../../../components/shared/Pagination";
 import { CreatePosts } from "./buttons";
 import { urls } from "../../../utils/constants";
+import { POSTS, SEARCH_POSTS, USERS } from "../../constants";
 
 export default async function Page({ params, searchParams }) {
   let posts = [],
@@ -31,16 +32,16 @@ export default async function Page({ params, searchParams }) {
     <div className="w-full">
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Users", href: urls.USERS },
+          { label: USERS, href: urls.USERS },
           {
-            label: "Posts",
+            label: POSTS,
             href: urls.USER_POSTS(userId),
             active: true,
           },
         ]}
       />
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search posts..." />
+        <Search placeholder={SEARCH_POSTS} />
         <CreatePosts userId={userId} />
       </div>
       <PostsListing posts={posts} currentPage={currentPage} />

@@ -3,9 +3,10 @@ import Breadcrumbs from "../../../../../components/shared/Breadcrumbs";
 import { fetchPostById } from "../../../../../api/posts";
 import EditPostForm from "../../components/PostsForm";
 import { urls } from "../../../../../utils/constants";
+import { EDIT_POST, POSTS } from "../../../../constants";
 
 export const metadata = {
-  title: "Edit Posts",
+  title: EDIT_POST,
 };
 
 export default async function Page({ params }) {
@@ -26,9 +27,9 @@ export default async function Page({ params }) {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Posts ", href: urls.USER_POSTS(userId) },
+          { label: POSTS, href: urls.USER_POSTS(userId) },
           {
-            label: "Edit Post",
+            label: EDIT_POST,
             href: urls.USER_POSTS_EDIT(userId, postId),
             active: true,
           },

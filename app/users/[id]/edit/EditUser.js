@@ -3,9 +3,10 @@ import EditUserForm from "../../components/UserForm";
 import { fetchUserById } from "../../../api/users";
 import Breadcrumbs from "../../../components/shared/Breadcrumbs";
 import { urls } from "../../../utils/constants";
+import { EDIT_USER, USERS } from "../../constants";
 
 export const metadata = {
-  title: "Edit User",
+  title: EDIT_USER,
 };
 
 export default async function Page({ params }) {
@@ -20,9 +21,9 @@ export default async function Page({ params }) {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Users", href: urls.USERS },
+          { label: USERS, href: urls.USERS },
           {
-            label: "Edit User",
+            label: EDIT_USER,
             href: urls.USER_EDIT(id),
             active: true,
           },

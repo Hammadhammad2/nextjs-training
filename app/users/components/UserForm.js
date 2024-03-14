@@ -8,7 +8,8 @@ import TextField from "../../components/shared/TextField";
 import UserValidationSchema from "../../utils/helpers/ValidationHelper/UserValidationSchemaHelper";
 import { createUserFormData } from "../../utils/helpers/DataHelper";
 import { generateInitialValues } from "../../utils";
-import { urls } from "../../utils/constants";
+import { CANCEL, urls } from "../../utils/constants";
+import { CREATE_USER, EDIT_USER } from "../constants";
 
 export default function UserForm({ user }) {
   return (
@@ -50,9 +51,9 @@ export default function UserForm({ user }) {
               href={urls.USERS}
               className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200 "
             >
-              Cancel
+              {CANCEL}
             </Link>
-            <Button type="submit">{user ? "Edit User" : "Create User"}</Button>
+            <Button type="submit">{user ? EDIT_USER : CREATE_USER}</Button>
           </div>
         </form>
       )}

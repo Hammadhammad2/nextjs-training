@@ -1,12 +1,12 @@
-import { Address, Name, Email, Phone, Website, Edit } from "../constants";
+import { ADDRESS, NAME, EMAIL, PHONE, WEBSITE, EDIT } from "../constants";
 
 const tableHeaders = [
-  { label: Name },
-  { label: Email },
-  { label: Address },
-  { label: Phone },
-  { label: Website },
-  { label: Edit, hidden: true },
+  { label: NAME },
+  { label: EMAIL },
+  { label: ADDRESS },
+  { label: PHONE },
+  { label: WEBSITE },
+  { label: EDIT, hidden: true },
 ];
 
 export default function UsersTableHeader() {

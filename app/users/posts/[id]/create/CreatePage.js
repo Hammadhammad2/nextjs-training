@@ -1,6 +1,8 @@
 import CreatePostsFrom from "../components/PostsForm";
 import Breadcrumbs from "../../../../components/shared/Breadcrumbs";
 import { urls } from "../../../../utils/constants";
+import { CREATE_POST } from "../../../constants";
+import { USERS_POSTS } from "../../../constants";
 
 export default async function Page({ params }) {
   const userId = params?.id || null;
@@ -8,9 +10,9 @@ export default async function Page({ params }) {
     <main>
       <Breadcrumbs
         breadcrumbs={[
-          { label: "Users / Posts", href: urls.USER_POSTS(userId) },
+          { label: USERS_POSTS, href: urls.USER_POSTS(userId) },
           {
-            label: "Create Post",
+            label: CREATE_POST,
             href: urls.USER_POSTS_CREATE?.(1),
             active: true,
           },

@@ -1,4 +1,4 @@
-import { City, Street } from "../constants";
+import { CITY, STREET } from "../constants";
 import { DeleteUser, UpdateUser } from "../buttons";
 import UsersTableCell from "./UsersTableCell";
 
@@ -12,11 +12,11 @@ export default function TableRow({ user }) {
       <UsersTableCell link={userLink}>
         <div className="flex items-start flex-col">
           <div className="flex">
-            <p className="font-semibold mr-2">{City}</p>
+            <p className="font-semibold mr-2">{CITY}</p>
             <p>{user?.address?.city}</p>
           </div>
           <div className="flex">
-            <p className="font-semibold mr-2">{Street}</p>
+            <p className="font-semibold mr-2">{STREET}</p>
             <p>{user?.address?.street}</p>
           </div>
         </div>

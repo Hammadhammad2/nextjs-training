@@ -7,7 +7,7 @@ import { editPost, createPost } from "../../../../api/posts.js";
 import PostValidationSchema from "../../../../utils/helpers/ValidationHelper/PostValidationSchema/index.js";
 import { generateInitialValues } from "../../../../utils/index.js";
 import { createPostFormData } from "../../../../utils/helpers/DataHelper/index.js";
-import { urls } from "../../../../utils/constants/index.js";
+import { CANCEL, urls } from "../../../../utils/constants/index.js";
 
 export default function PostForm({ post, userId }) {
   return (
@@ -49,7 +49,7 @@ export default function PostForm({ post, userId }) {
               href={urls.USER_POSTS(userId)}
               className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200 "
             >
-              Cancel
+              {CANCEL}
             </Link>
             <Button type="submit">{post ? "Edit Post" : "Create Post"}</Button>
           </div>
