@@ -9,18 +9,18 @@ export default function CommentsModal({ handleCloseModal, openModal, postId }) {
   const [commentsData, setCommentsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchCommentsData = async () => {
-      try {
-        setLoading(true);
-        const { data } = await fetchCommentsByPostId(postId);
-        setCommentsData(data);
-        setLoading(false);
-      } catch (e) {
-        setLoading(false);
-      }
-    };
+  const fetchCommentsData = async () => {
+    try {
+      setLoading(true);
+      const { data } = await fetchCommentsByPostId(postId);
+      setCommentsData(data);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     if (openModal) fetchCommentsData();
   }, [openModal]);
 
