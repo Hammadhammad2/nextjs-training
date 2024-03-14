@@ -51,15 +51,9 @@ export function generateInitialValues(formData) {
 
     nestedKeys.forEach((key, index) => {
       if (index === nestedKeys.length - 1) {
-        if (field.multiple) {
-          currentValue[key] = [];
-        } else {
-          currentValue[key] = "";
-        }
+        currentValue[key] = "";
       } else {
-        if (!currentValue[key]) {
-          currentValue[key] = isNaN(nestedKeys[index + 1]) ? {} : [];
-        }
+        currentValue[key] = currentValue[key] || {};
         currentValue = currentValue[key];
       }
     });
