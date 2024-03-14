@@ -17,7 +17,7 @@ export default function UsersTableHeader() {
           <th
             key={index}
             scope="col"
-            className={`px-5 py-5 font-medium ${
+            className={`px-6 py-5 font-medium ${
               index === tableHeaders.length - 1 ? "relative" : ""
             } ${header.hidden ? "sr-only" : ""}`}
           >
