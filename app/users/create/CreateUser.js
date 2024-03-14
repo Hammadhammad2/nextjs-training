@@ -1,7 +1,7 @@
 import Breadcrumbs from "../../components/shared/Breadcrumbs";
-import { urls } from "../../utils/constants";
+import { createUserBreadcrumb } from "../../utils/helpers/dataHelper";
 import CreateUserForm from "../components/UserForm";
-import { CREATE_USER, USERS } from "../constants";
+import { CREATE_USER } from "../constants";
 
 export const metadata = {
   title: CREATE_USER,
@@ -10,16 +10,7 @@ export const metadata = {
 export default async function Page() {
   return (
     <main>
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: USERS, href: urls.USERS },
-          {
-            label: CREATE_USER,
-            href: urls.USER_CREATE,
-            active: true,
-          },
-        ]}
-      />
+      <Breadcrumbs breadcrumbs={createUserBreadcrumb} />
       <CreateUserForm />
     </main>
   );

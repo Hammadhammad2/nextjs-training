@@ -1,5 +1,6 @@
-import { DeletePosts, EditPosts } from "../buttons";
+import { EditPosts } from "../buttons";
 import PostsListingBody from "./PostListingBody";
+import DeletePost from "./DeletePost";
 
 export default function PostsListing({ posts }) {
   return (
@@ -14,7 +15,7 @@ export default function PostsListing({ posts }) {
                 <PostsListingBody post={post} postId={post.id} />
                 <div className="flex gap-2">
                   <EditPosts userId={post.userId} postId={post.id} />
-                  <DeletePosts userId={post.userId} postId={post.id} />
+                  <DeletePost postId={post.id} />
                 </div>
               </div>
             </li>

@@ -13,8 +13,8 @@ export default function CommentsModal({ handleCloseModal, openModal, postId }) {
     const fetchCommentsData = async () => {
       try {
         setLoading(true);
-        const response = await fetchCommentsByPostId(postId);
-        setCommentsData(response);
+        const { data } = await fetchCommentsByPostId(postId);
+        setCommentsData(data);
         setLoading(false);
       } catch (e) {
         setLoading(false);

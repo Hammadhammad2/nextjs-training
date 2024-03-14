@@ -2,8 +2,8 @@ import { notFound } from "next/navigation";
 import Breadcrumbs from "../../../../../components/shared/Breadcrumbs";
 import { fetchPostById } from "../../../../../api/posts";
 import EditPostForm from "../../components/PostsForm";
-import { urls } from "../../../../../utils/constants";
-import { EDIT_POST, POSTS } from "../../../../constants";
+import { EDIT_POST } from "../../../../constants";
+import { editPostBreadcrumb } from "../../../../../utils/helpers/dataHelper";
 
 export const metadata = {
   title: EDIT_POST,
@@ -16,7 +16,8 @@ export default async function Page({ params }) {
   let post = null;
 
   try {
-    post = await fetchPostById(postId);
+    const { data } = await fetchPostById(postId);
+    post = data;
   } catch (e) {
     console.error(e);
   }
@@ -25,16 +26,7 @@ export default async function Page({ params }) {
 
   return (
     <main>
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: POSTS, href: urls.USER_POSTS(userId) },
-          {
-            label: EDIT_POST,
-            href: urls.USER_POSTS_EDIT(userId, postId),
-            active: true,
-          },
-        ]}
-      />
+      <Breadcrumbs breadcrumbs={editPostBreadcrumb(userId, post?.id)} />
       <EditPostForm post={post} userId={userId} />
     </main>
   );

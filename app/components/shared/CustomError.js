@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { SOMETHING_WENT_WRONG, TRY_AGAIN } from "../../utils/constants";
+import {
+  SOMETHING_WENT_WRONG,
+  TRY_AGAIN,
+} from "../../utils/constants/genericConstants";
 export default function CustomError({ error, reset }) {
   useEffect(() => {
     console.error(error);

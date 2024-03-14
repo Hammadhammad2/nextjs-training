@@ -6,7 +6,8 @@ export default async function UsersTable({ query }) {
   let searchedUsers = [];
 
   try {
-    searchedUsers = await fetchUsers(query);
+    const { data } = await fetchUsers(query);
+    searchedUsers = data;
   } catch (e) {
     console.error(e);
   }

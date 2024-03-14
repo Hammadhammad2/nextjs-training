@@ -1,6 +1,7 @@
 import { CITY, STREET } from "../constants";
-import { DeleteUser, UpdateUser } from "../buttons";
+import { UpdateUser } from "../buttons";
 import UsersTableCell from "./UsersTableCell";
+import DeleteUser from "./DeleteUser";
 
 export default function TableRow({ user }) {
   const userLink = `/users/posts/${user?.id}`;

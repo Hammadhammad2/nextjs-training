@@ -2,7 +2,7 @@
 import UsersTableRow from "./UsersTableRow";
 import { NO_USERS_FOUND } from "../constants";
 
-export default function UsersTableBody({ users }) {
+export default function UsersTableBody({ users = [] }) {
   return (
     <tbody className="bg-white">
       {users?.length === 0 ? (

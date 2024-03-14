@@ -4,8 +4,10 @@ import Breadcrumbs from "../../../components/shared/Breadcrumbs";
 import PostsListing from "./components/PostsListing";
 import Pagination from "../../../components/shared/Pagination";
 import { CreatePosts } from "./buttons";
-import { urls } from "../../../utils/constants";
-import { POSTS, SEARCH_POSTS, USERS } from "../../constants";
+import { SEARCH_POSTS } from "../../constants";
+import { notFound } from "next/navigation";
+import { postsBreadcrumb } from "../../../utils/helpers/dataHelper";
+const ITEMS_PER_PAGE = 4;
 
 export default async function Page({ params, searchParams }) {
   let posts = [],
@@ -15,31 +17,22 @@ export default async function Page({ params, searchParams }) {
   const query = searchParams?.query || "";
 
   try {
-    const resp = await fetchFilteredPostsAndTotalCount(
+    const [paginatedPosts, allPosts] = await fetchFilteredPostsAndTotalCount(
       userId,
       currentPage,
       query
     );
-    posts = resp?.data;
-    totalPages = resp?.totalPages;
+
+    posts = paginatedPosts?.data || [];
+    totalPages = Math.ceil(allPosts?.data?.length / ITEMS_PER_PAGE);
   } catch (e) {
     console.error(e);
   }
-
   if (!posts) notFound();
 
   return (
     <div className="w-full">
-      <Breadcrumbs
-        breadcrumbs={[
-          { label: USERS, href: urls.USERS },
-          {
-            label: POSTS,
-            href: urls.USER_POSTS(userId),
-            active: true,
-          },
-        ]}
-      />
+      <Breadcrumbs breadcrumbs={postsBreadcrumb(userId)} />
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder={SEARCH_POSTS} />
         <CreatePosts userId={userId} />

@@ -3,7 +3,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import { PAGE, QUERY, SEARCH } from "../../utils/constants";
+import { PAGE, QUERY, SEARCH } from "../../utils/constants/genericConstants";
 
 export default function Search({ placeholder }) {
   const searchParams = useSearchParams();
@@ -14,11 +14,9 @@ export default function Search({ placeholder }) {
     const term = e.target.value;
     const params = new URLSearchParams(searchParams);
     params.set(PAGE, "1");
-    if (term) {
-      params.set(QUERY, term);
-    } else {
-      params.delete(QUERY);
-    }
+    if (term) params.set(QUERY, term);
+    else params.delete(QUERY);
+
     replace(`${pathname}?${params.toString()}`);
   }, 300);
 
