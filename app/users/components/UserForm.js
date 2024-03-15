@@ -43,7 +43,7 @@ export default function UserForm({ user }) {
             <TextField
               label={config.label}
               name={config.name}
-              value={formik.values[config.name]}
+              value={getIn(formik.values, config.name)}
               onChange={formik.handleChange}
               placeholder={config.placeholder}
               error={getIn(formik.errors, config.name)}
