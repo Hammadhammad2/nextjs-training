@@ -1,5 +1,4 @@
 "use Client";
-
 const TextField = ({
   label,
   name,
@@ -8,15 +7,23 @@ const TextField = ({
   placeholder,
   error,
   touched,
+  type = "text",
 }) => {
+  const handleChange = (e) => {
+    const inputValue = e.target.value;
+    if (type === "number" && !/^\d*$/.test(inputValue)) {
+      return;
+    }
+    onChange(e);
+  };
+
   return (
     <div className="mb-2">
       <label htmlFor={name} className="mb-2 block text-sm font-medium">
         {label}
       </label>
       <input
-        type="text"
-        onChange={onChange}
+        onChange={handleChange}
         value={value}
         name={name}
         id={name}

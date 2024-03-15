@@ -24,6 +24,7 @@ export const createUserFormData = [
     label: "Phone",
     name: "phone",
     placeholder: "Enter your phone",
+    type: "number",
   },
   {
     label: "Street",

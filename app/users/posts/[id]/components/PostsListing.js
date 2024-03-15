@@ -15,7 +15,7 @@ export default function PostsListing({ posts }) {
                 <PostsListingBody post={post} postId={post.id} />
                 <div className="flex gap-2">
                   <EditPosts userId={post.userId} postId={post.id} />
-                  <DeletePost postId={post.id} />
+                  <DeletePost postId={post.id} userId={post.userId} />
                 </div>
               </div>
             </li>

@@ -48,6 +48,7 @@ export default function UserForm({ user }) {
               placeholder={config.placeholder}
               error={getIn(formik.errors, config.name)}
               touched={getIn(formik.touched, config.name)}
+              type={config?.type}
             />
           </div>
         ))}
