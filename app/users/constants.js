@@ -15,4 +15,3 @@ export const CREATE_POST = "Create Post";
 export const EDIT_USER = "Edit User";
 export const EDIT_POST = "Edit Post";
 export const POSTS = "Posts";
-export const USERS_POSTS = "Users / Posts";
