@@ -3,13 +3,14 @@
 import { useRouter } from "next/navigation";
 import { deletePost } from "../../../../api/posts";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { USER_POSTS_PAGE_1 } from "../../../../utils/constants/urlConstants";
 
 export default function DeletePost({ postId, userId }) {
   const router = useRouter();
   const handleDeletePosts = async () => {
     try {
       await deletePost(postId);
-      router.push(`/users/posts/${userId}?page=1`);
+      router.push(USER_POSTS_PAGE_1(userId));
     } catch (e) {
       console.error(e);
     }
