@@ -14,7 +14,7 @@ import {
   USERS as USERS_URL,
 } from "../../../utils/constants/urlConstants";
 
-export const createUserFormData = [
+export const createUserFormData = () => [
   {
     label: "Name",
     name: "name",
@@ -48,7 +48,7 @@ export const createUserFormData = [
   },
 ];
 
-export const createPostFormData = [
+export const createPostFormData = () => [
   {
     label: "Title",
     name: "title",
@@ -70,7 +70,7 @@ export const editUserBreadcrumb = (id) => [
   },
 ];
 
-export const createUserBreadcrumb = [
+export const createUserBreadcrumb = () => [
   { label: USERS, href: USERS_URL },
   {
     label: CREATE_USER,

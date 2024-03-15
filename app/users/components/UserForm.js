@@ -15,10 +15,12 @@ import { useRouter } from "next/navigation";
 
 export default function UserForm({ user }) {
   const router = useRouter();
-
-  const initialValues = user || generateInitialValues(createUserFormData);
-
-  const onSubmit = async (values, { resetForm }) => {
+  const formik = useFormik({
+    initialValues: user || generateInitialValues(createUserFormData()),
+    validationSchema: UserValidationSchema.createUser(),
+    onSubmit,
+  });
+  async function onSubmit(values, { resetForm }) {
     try {
       if (user) await editUser(user.id, values);
       else await createUser(values);
@@ -27,18 +29,12 @@ export default function UserForm({ user }) {
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema: UserValidationSchema.createUser(),
-    onSubmit,
-  });
+  }
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        {createUserFormData?.map((config, index) => (
+        {createUserFormData()?.map((config, index) => (
           <div key={index}>
             <TextField
               label={config.label}

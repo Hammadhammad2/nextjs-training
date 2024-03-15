@@ -13,10 +13,13 @@ import { useRouter } from "next/navigation";
 
 export default function PostForm({ post, userId }) {
   const router = useRouter();
+  const formik = useFormik({
+    initialValues: post || generateInitialValues(createPostFormData()),
+    validationSchema: PostValidationSchema.createPost(),
+    onSubmit,
+  });
 
-  const initialValues = post || generateInitialValues(createPostFormData);
-
-  const onSubmit = async (values, { resetForm }) => {
+  async function onSubmit(values, { resetForm }) {
     try {
       if (post) await editPost(post.id, values);
       else await createPost({ ...values, userId });
@@ -25,18 +28,12 @@ export default function PostForm({ post, userId }) {
     } catch (e) {
       console.error(e);
     }
-  };
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema: PostValidationSchema.createPost(),
-    onSubmit,
-  });
+  }
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <div className=" rounded-md bg-gray-50 p-4 md:p-6 ">
-        {createPostFormData?.map((config, index) => (
+        {createPostFormData()?.map((config, index) => (
           <div key={index}>
             <TextField
               label={config.label}
