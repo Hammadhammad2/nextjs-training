@@ -4,8 +4,8 @@ import { UserGroupIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { USERS as USER_URL } from "../utils/constants/urlConstants";
-import { USERS } from "../users/constants";
+import { USERS as USER_URL } from "../../utils/constants/urlConstants";
+import { USERS } from "../../users/constants";
 
 const links = [{ name: USERS, href: USER_URL, icon: UserGroupIcon }];
 

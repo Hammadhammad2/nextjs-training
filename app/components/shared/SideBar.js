@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PowerIcon } from "@heroicons/react/24/outline";
 import AcmeLogo from "../logo";
-import NavLinks from "../navLinks";
+import NavLinks from "./NavLinks";
 import { HOME } from "../../utils/constants/urlConstants";
 
 export default function SideBar() {
