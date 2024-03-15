@@ -20,11 +20,8 @@ export default function UserForm({ user }) {
 
   const onSubmit = async (values, { resetForm }) => {
     try {
-      if (user) {
-        await editUser(user.id, values);
-      } else {
-        await createUser(values);
-      }
+      if (user) await editUser(user.id, values);
+      else await createUser(values);
       resetForm();
       router.push(USERS);
     } catch (e) {
