@@ -52,3 +52,7 @@ export function generateInitialValues(formData) {
 
   return initialValues;
 }
+
+export function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
