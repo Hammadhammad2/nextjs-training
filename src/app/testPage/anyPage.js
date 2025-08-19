@@ -10,7 +10,8 @@ export default function AnyPage() {
 		console.log('Component mounted');
 		document.getElementById('some-element').innerHTML = 'Direct DOM manipulation';
 		setData([1, 2, 3, 4, 5]);
-	}, []); // Missing dependency: setData
+		setData([1, 2, 3, 4, 5]);
+	}, [setData]); // Missing dependency: setData
 
 	// Unused function
 	function unusedFunction() {
