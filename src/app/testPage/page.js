@@ -7,7 +7,7 @@ export default function TestPage() {
 	const [theme, setTheme] = useState('light');
 	const unusedVar = 'not used';
 
-	const handleTabChange = (tab) => {
+	const handleTabChange = tab => {
 		setActiveTab(tab);
 		console.log('Tab changed to:', tab);
 	};
@@ -32,10 +32,8 @@ export default function TestPage() {
 				<button onClick={() => handleTabChange('users')}>Users</button>
 				<button onClick={toggleTheme}>Toggle Theme</button>
 			</nav>
-			
-			<main>
-				{renderContent()}
-			</main>
+
+			<main>{renderContent()}</main>
 		</div>
 	);
 }

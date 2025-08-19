@@ -28,30 +28,34 @@ export default function AnyPage() {
 		}
 	};
 
-	const handlePostClick = (post) => {
+	const handlePostClick = post => {
 		setSelectedPost(post);
 		console.log('Post clicked:', post.title);
 	};
 
-	const handleDelete = (id) => {
+	const handleDelete = id => {
 		const updatedPosts = posts.filter(post => post.id !== id);
 		setPosts(updatedPosts);
 		alert('Post deleted!');
 	};
 
-	const filteredPosts = posts.filter(post => 
+	const filteredPosts = posts.filter(post =>
 		post.title.toLowerCase().includes(filter.toLowerCase())
 	);
 
-	const renderPost = (post) => {
+	const renderPost = post => {
 		return (
 			<div onClick={() => handlePostClick(post)}>
 				<h3>{post.title}</h3>
 				<p>{post.body}</p>
-				<button onClick={(e) => {
-					e.stopPropagation();
-					handleDelete(post.id);
-				}}>Delete</button>
+				<button
+					onClick={e => {
+						e.stopPropagation();
+						handleDelete(post.id);
+					}}
+				>
+					Delete
+				</button>
 			</div>
 		);
 	};
@@ -60,7 +64,7 @@ export default function AnyPage() {
 		const newPost = {
 			id: posts.length + 1,
 			title: 'New Post',
-			body: 'This is a new post'
+			body: 'This is a new post',
 		};
 		setPosts([...posts, newPost]);
 	};
@@ -71,21 +75,19 @@ export default function AnyPage() {
 	return (
 		<div>
 			<h1>Posts from JSONPlaceholder</h1>
-			<div id="post-count"></div>
-			
-			<input 
-				type="text" 
-				placeholder="Filter posts..." 
-				value={filter} 
-				onChange={(e) => setFilter(e.target.value)}
+			<div id='post-count'></div>
+
+			<input
+				type='text'
+				placeholder='Filter posts...'
+				value={filter}
+				onChange={e => setFilter(e.target.value)}
 			/>
-			
+
 			<button onClick={addNewPost}>Add New Post</button>
-			
-			<div>
-				{filteredPosts.map(post => renderPost(post))}
-			</div>
-			
+
+			<div>{filteredPosts.map(post => renderPost(post))}</div>
+
 			{selectedPost && (
 				<div>
 					<h2>Selected Post</h2>

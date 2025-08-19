@@ -31,12 +31,12 @@ export default function UserList() {
 		}
 	};
 
-	const handleUserSelect = (user) => {
+	const handleUserSelect = user => {
 		setSelectedUser(user);
 		document.title = `Selected: ${user.name}`;
 	};
 
-	const filteredUsers = users.filter(user => 
+	const filteredUsers = users.filter(user =>
 		user.name.toLowerCase().includes(searchTerm.toLowerCase())
 	);
 
@@ -48,7 +48,7 @@ export default function UserList() {
 		const newUser = {
 			id: users.length + 1,
 			name: 'New User',
-			email: 'newuser@example.com'
+			email: 'newuser@example.com',
 		};
 		setUsers([...users, newUser]);
 	};
@@ -58,15 +58,15 @@ export default function UserList() {
 	return (
 		<div>
 			<h2>Users List</h2>
-			<input 
-				type="text" 
-				placeholder="Search users..." 
-				value={searchTerm} 
-				onChange={(e) => setSearchTerm(e.target.value)}
+			<input
+				type='text'
+				placeholder='Search users...'
+				value={searchTerm}
+				onChange={e => setSearchTerm(e.target.value)}
 			/>
 			<button onClick={addUser}>Add User</button>
 			<button onClick={toggleVisibility}>Hide Users</button>
-			
+
 			<div>
 				{filteredUsers.map(user => (
 					<div onClick={() => handleUserSelect(user)}>
@@ -75,7 +75,7 @@ export default function UserList() {
 					</div>
 				))}
 			</div>
-			
+
 			{selectedUser && (
 				<div>
 					<h3>Selected User Details</h3>
